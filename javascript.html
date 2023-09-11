@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="javascript.css">
+    <title></title>
+</head>
+<body>
+    <center>
+        <h1 class="gam">GAME</h1>
+        <h3 class="hani">ROCK , PAPER , SCISSORS GAME</h3>
+        <img src="image/rock.png" class="hii">
+        <button id="a">Rock</button>
+        <img src="image/scissors.png" class="hii">
+        <button id="b">Paper</button>
+        <img src="image/sc.png" class="hii">
+        <button id="c">Scissors</button>
+        <p class="qwrr" id="result"></p>
+
+        <script>
+            const choices = ["rock", "paper", "scissors"];
+
+            function computerPlay() {
+                const randomIndex = Math.floor(Math.random() * choices.length);
+                return choices[randomIndex];
+            }
+
+            function playRound(me, you) {
+
+                if (me === you) {
+                    return "TIE!";
+                } else if (
+                    (me === "rock" && you === "scissors") ||
+                    (me === "paper" && you === "rock") ||
+                    (me === "scissors" && you === "paper")
+                ) {
+                    return `WIN!`;
+                } else {
+                    return `LOSE!`;
+                }
+            }
+
+            const rockButton = document.getElementById("a");
+            const paperButton = document.getElementById("b");
+            const scissorsButton = document.getElementById("c");
+            const resultParagraph = document.getElementById("result");
+
+            rockButton.addEventListener("click", () => {
+                const you = computerPlay();
+                const result = playRound("rock", you);
+                resultParagraph.textContent = result;
+            });
+
+            paperButton.addEventListener("click", () => {
+                const you = computerPlay();
+                const result = playRound("paper", you);
+                resultParagraph.textContent = result;
+            });
+
+            scissorsButton.addEventListener("click", () => {
+                const you = computerPlay();
+                const result = playRound("scissors", you);
+                resultParagraph.textContent = result;
+            });
+        </script>
+    </center>
+</body>
+</html>
